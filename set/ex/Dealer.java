@@ -40,12 +40,26 @@ public class Dealer implements Runnable {
      */
     private long reshuffleTime = Long.MAX_VALUE;
 
+    /**
+     * The player's Sets that waits for the dealer's testing
+     * volatile necessity for the dealer's read safely while players insert
+     */
     public volatile Queue<int[][]> requests;
 
+    /**
+     * Semaphore for fair insertion to the requests-queue by multiple player's threads
+     */
     private Semaphore sem;
 
+    /**
+     * The set that needs to be removed from the table
+     */
     public int[] setToRemove;
 
+    /**
+     * States if the table is full with cards
+     * volatile for safe reading by player's threads
+     */
     public volatile boolean cardsOnTable;
 
     public Dealer(Env env, Table table, Player[] players) {
@@ -54,9 +68,8 @@ public class Dealer implements Runnable {
         this.players = players;
         deck = IntStream.range(0, env.config.deckSize).boxed().collect(Collectors.toList());
         requests = new LinkedList<>();
-        sem = new Semaphore(1, true);//alkfjalkcjblerdfvsd
-        setToRemove = new int[3];//represents slots number of the cards that need to be removed,
-        // after a set was claimed.
+        sem = new Semaphore(1, true);
+        setToRemove = new int[3];//represents slots number of the cards that need to be removed, after a set was claimed.
         for (int i = 0; i < 3; i++)
             setToRemove[i] = -1;
         cardsOnTable = false;
@@ -67,10 +80,9 @@ public class Dealer implements Runnable {
      */
     @Override
     public void run() {
+        //initializing and starting player threads
         System.out.printf("Info: Thread %s starting.%n", Thread.currentThread().getName());
         Thread[] threadsArray = new Thread[env.config.players];
-        //initializing and starting player threads
-        //placeCardsOnTable();
         for (int i = 0; i < env.config.players; i++) {
             threadsArray[i] = new Thread(players[i], env.config.playerNames[i]);
             threadsArray[i].start();
@@ -79,11 +91,12 @@ public class Dealer implements Runnable {
             } catch (InterruptedException ignored) {
             }
         }
+        //dealer thread's main loop:
         while (!shouldFinish()) {
             placeCardsOnTable();
-            reshuffleTime = System.currentTimeMillis() + env.config.turnTimeoutMillis;
-            timerLoop();
-            updateTimerDisplay(false);
+            reshuffleTime = System.currentTimeMillis() + env.config.turnTimeoutMillis;  // setting the timer after placing cards
+            timerLoop();                                                                // inner loop of the dealer as long as the countdown did not come up
+            updateTimerDisplay(false);                                                  //
             removeAllCardsFromTable();
         }
         //terminate the player threads.
@@ -91,8 +104,6 @@ public class Dealer implements Runnable {
             players[i].terminate();
             players[i].join();
         }
-        //did we stop the pressing simulation thread
-        //is it actually neccesary to stop them
 
         announceWinners();
 
@@ -104,12 +115,12 @@ public class Dealer implements Runnable {
      */
     private void timerLoop() {
         while (!terminate && System.currentTimeMillis() < reshuffleTime) {
-            sleepUntilWokenOrTimeout();
+            sleepUntilWokenOrTimeout();                         //dealer thread slips until one of the players claims a set or until time is up
             boolean isSet = false;
             boolean cardIsOnTable = true;
             int playerId=-1;
-            if (!terminate && System.currentTimeMillis() < reshuffleTime /*&& !requests.isEmpty() && requests.peek() != null*/) {
-                int[][] arr = new int[3][3];
+            if (!terminate && System.currentTimeMillis() < reshuffleTime ) {
+                int[][] arr = new int[3][3];                    //for representing the card's Ids and slots of the supposed set
                 for (int i = 0; i < 3; i++)
                     for (int j = 0; j < 3; j++)
                         arr[i][j] = requests.peek()[i][j];
@@ -120,29 +131,32 @@ public class Dealer implements Runnable {
                 int[] checkSet = new int[3];
                 for (int i = 0; i < 3; i++) {
                     checkSet[i] = arr[0][i];
-                    if (arr[1][i] == -1) {//if the card was removed from the table
+                    if (arr[1][i] == -1) {                 //if the card was removed from the table
                         cardIsOnTable = false;
                     }
                 }
                 isSet = env.util.testSet(checkSet);
-                if (isSet && cardIsOnTable) {//set claimed
+                //set claimed->player gets rewarded with a point:
+                if (isSet && cardIsOnTable) {
                     players[arr[2][0]].point();
                     for (int g = 0; g < 3; g++) {
-                        setToRemove[g] = arr[1][g];
+                        setToRemove[g] = arr[1][g];        //saving the set that needs to be removed from the table
                     }
-                } else if (cardIsOnTable) {//wrong set
-                    players[arr[2][0]].penalty();
+                } else if (cardIsOnTable) {                //wrong set->player gets a penalty
+                    players[arr[2][0]].penalty();          //the player's thread sleeps for a penalty time, stopping the specific player from playing
                 }
-                synchronized (players[arr[2][0]]) {
+                synchronized (players[arr[2][0]]) {        // sync with player's thread for clearing his queue of actions
                     players[arr[2][0]].incomingActions.clear();
                 }
 
             }
+            //if a set was claimed -> update the timer and replace the set:
             updateTimerDisplay(isSet && cardIsOnTable);
             if (isSet && cardIsOnTable) {
                 removeCardsFromTable();
                 placeCardsOnTable();
             }
+            //wake up the player's thread to continue operating after the set-check is finished
             if (playerId!=-1) {
                 synchronized (players[playerId]) {
                     players[playerId].checkingSet = false;
@@ -175,9 +189,9 @@ public class Dealer implements Runnable {
     private void removeCardsFromTable() {
         // TODO implement
         cardsOnTable = false;
-        for (int i = 0; i < 3; i++) {//setToRemove.length
+        for (int i = 0; i < 3; i++) {           //setToRemove.length
             for (int j = 0; j < players.length; j++) {
-                for (int k = 0; k < 3; k++) {//players[j].setArray[1].length
+                for (int k = 0; k < 3; k++) {   //players[j].setArray[1].length
                     synchronized (players[j]) {
                         if (players[j].setArray[1][k] == setToRemove[i]) {
                             //update players' fields.
@@ -191,7 +205,7 @@ public class Dealer implements Runnable {
             }
             //remove cards and update display
             if (setToRemove[i] != -1) {
-                synchronized (this) {
+                synchronized (this) {       //synchronization for preventing players from claiming sets while replacing cards
                     env.ui.removeTokens(setToRemove[i]);
                     table.removeCard(setToRemove[i]);
                 }
@@ -203,11 +217,10 @@ public class Dealer implements Runnable {
      * Check if any cards can be removed from the deck and placed on the table.
      */
     private void placeCardsOnTable() {
-        // TODO implement
         for (int i = 0; i < env.config.tableSize; i++) {
             if (!deck.isEmpty() && (table.slotToCard[i] == null || table.slotToCard[i] == -1)) {
                 int random = (int) (Math.random() * deck.size());
-                table.placeCard(deck.remove(random), i);//taking a random card out of the deck and placing it on the table.
+                table.placeCard(deck.remove(random), i);    //taking a random card out of the deck and placing it on the table.
             }
         }
         cardsOnTable = true;
@@ -220,7 +233,6 @@ public class Dealer implements Runnable {
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
     private synchronized void sleepUntilWokenOrTimeout() {
-        // TODO implement
             while (!terminate && System.currentTimeMillis() < reshuffleTime && requests.isEmpty()) {
                 try {
                     wait(10);
@@ -234,11 +246,11 @@ public class Dealer implements Runnable {
      * Reset and/or update the countdown and the countdown display.
      */
     private void updateTimerDisplay(boolean reset) {
-        // TODO implement
         if (reset)
             reshuffleTime = System.currentTimeMillis() + env.config.turnTimeoutMillis;
         long timer = Math.abs(reshuffleTime - System.currentTimeMillis());
         env.ui.setCountdown(timer, reset);
+        //count down for the last few seconds displayed in red
         if (timer <= env.config.turnTimeoutWarningMillis)
             env.ui.setCountdown(timer, true);
     }
@@ -267,14 +279,14 @@ public class Dealer implements Runnable {
                 }
             }
         }
-        env.ui.removeTokens();  //remove all tokens from the display
+        env.ui.removeTokens();                           //remove all tokens from the display
         for (int i = 0; i < env.config.tableSize; i++) { //remove all cards from table and display
-            if (table.slotToCard[i] != -1) {//gray card
+            if (table.slotToCard[i] != -1) {             //gray card
                 deck.add(table.slotToCard[i]);
                 table.removeCard(i);
             }
         }
-        env.ui.removeTokens();  //remove all tokens from the display
+        env.ui.removeTokens();                           //remove all tokens from the display
 
     }
 
@@ -283,7 +295,6 @@ public class Dealer implements Runnable {
      * Check who is/are the winner/s and displays them.
      */
     private void announceWinners() {
-        // TODO implement
         int maxPoints = -1;
         for (int i = 0; i < players.length; i++) {
             if (players[i].score() > maxPoints) {
@@ -301,18 +312,21 @@ public class Dealer implements Runnable {
         env.ui.announceWinner(winners);
     }
 
-    public void addSetToQueue(int[][] array) {//implement
+    /**
+     * players threads adds the claimed set to the dealers Queue
+     * using a fair semaphore to maintain fairness(the set that was claimed first will be tested first by the dealer)
+     */
+    public void addSetToQueue(int[][] array) {
         try {
             sem.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        synchronized (this) {
+        synchronized (this) {       //sync with the dealer's thread
             if (array != null) {
                 requests.add(array);
             }
-            notifyAll();
+            notifyAll();            //notifying the dealer's thread to wake up and check the set
         }
         sem.release();
     }
