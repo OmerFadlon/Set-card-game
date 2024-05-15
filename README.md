@@ -1,5 +1,19 @@
 My Concurrent Implementation of the card game - "Set" 
 
+for running the game:
+
+1. After you git clone this repo, simply run the main file of the project to start the game.
+2. compete against your friend and the Ai players using the keyboard to pick cards and collect sets.
+   
+Key board bottuns for player 1: "o", "i", "u", "y", "l", "k", "j", "h", ".", ",", "m", "n"
+
+Key board bottuns for player 2: "q", "w", "e", "r", "a", "s", "d", "f", "z", "x", "c", "v"
+
+3. Commit Optional changes to the game settings through the config file data:
+  a. Changing the number of human players or Ai players.
+  b. Changing the timer settings
+  c. Changing the player's reward/penelty system operation.
+   
 Introdaction:
 
 Designed and implemented an online version of the card game "set", utilizing threads, synchronization methods, and concurrency to facilitate simultaneous gameplay for both human and AI players effectively.
