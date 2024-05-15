@@ -1,0 +1,45 @@
+[22:05:17.016] [INFO   ] thread main starting.
+[22:05:17.024] [SEVERE ] cannot read configuration file config.properties trying from resources.
+[22:05:17.027] [SEVERE ] configuration file was loaded from resources directory.
+[22:05:17.664] [INFO   ] thread dealer starting.
+[22:05:17.819] [SEVERE ] placing card 8 in slot 0
+[22:05:17.928] [SEVERE ] placing card 18 in slot 1
+[22:05:18.038] [SEVERE ] placing card 29 in slot 2
+[22:05:18.148] [SEVERE ] placing card 69 in slot 3
+[22:05:18.258] [SEVERE ] placing card 55 in slot 4
+[22:05:18.369] [SEVERE ] placing card 54 in slot 5
+[22:05:18.478] [SEVERE ] placing card 57 in slot 6
+[22:05:18.589] [SEVERE ] placing card 20 in slot 7
+[22:05:18.696] [SEVERE ] placing card 71 in slot 8
+[22:05:18.808] [SEVERE ] placing card 31 in slot 9
+[22:05:18.918] [SEVERE ] placing card 24 in slot 10
+[22:05:19.027] [SEVERE ] placing card 72 in slot 11
+[22:05:19.036] [SEVERE ] updating countdown to 60000
+[22:05:19.037] [SEVERE ] updating countdown to 59999
+[22:05:19.994] [SEVERE ] key 59 was pressed by player 2
+[22:05:19.995] [SEVERE ] player 2 placing token on slot 7
+[22:05:20.054] [SEVERE ] updating countdown to 58982
+[22:05:20.080] [SEVERE ] key 76 was pressed by player 2
+[22:05:20.080] [SEVERE ] player 2 placing token on slot 6
+[22:05:20.239] [SEVERE ] key 75 was pressed by player 2
+[22:05:20.240] [SEVERE ] player 2 placing token on slot 5
+[22:05:20.240] [SEVERE ] removing player 2 token from slot 5
+[22:05:20.240] [SEVERE ] removing player 2 token from slot 6
+[22:05:20.240] [SEVERE ] removing player 2 token from slot 7
+[22:05:20.242] [SEVERE ] setting player 2 freeze to 3000
+[22:05:21.019] [SEVERE ] key 59 was pressed by player 2
+[22:05:21.066] [SEVERE ] updating countdown to 57970
+[22:05:21.257] [SEVERE ] setting player 2 freeze to 2000
+[22:05:22.070] [SEVERE ] updating countdown to 56966
+[22:05:22.258] [SEVERE ] setting player 2 freeze to 1000
+[22:05:23.084] [SEVERE ] updating countdown to 55952
+[22:05:23.273] [SEVERE ] setting player 2 freeze to 0
+[22:05:23.273] [SEVERE ] player 2 placing token on slot 7
+[22:05:23.275] [SEVERE ] key 76 was pressed by player 2
+[22:05:23.276] [SEVERE ] player 2 placing token on slot 6
+[22:05:24.094] [SEVERE ] updating countdown to 54942
+[22:05:24.862] [SEVERE ] exit button pressed
+[22:05:24.862] [INFO   ] thread dealer terminated.
+[22:05:24.863] [INFO   ] thread dealer terminated.
+[22:05:24.864] [SEVERE ] thanks for playing... it was fun!
+[22:05:24.864] [INFO   ] thread main terminated.

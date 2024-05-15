@@ -1,0 +1,73 @@
+[22:12:35.446] [INFO   ] thread main starting.
+[22:12:35.455] [SEVERE ] cannot read configuration file config.properties trying from resources.
+[22:12:35.459] [SEVERE ] configuration file was loaded from resources directory.
+[22:12:36.110] [INFO   ] thread dealer starting.
+[22:12:36.276] [SEVERE ] placing card 9 in slot 0
+[22:12:36.387] [SEVERE ] placing card 43 in slot 1
+[22:12:36.499] [SEVERE ] placing card 28 in slot 2
+[22:12:36.609] [SEVERE ] placing card 15 in slot 3
+[22:12:36.720] [SEVERE ] placing card 35 in slot 4
+[22:12:36.831] [SEVERE ] placing card 61 in slot 5
+[22:12:36.941] [SEVERE ] placing card 71 in slot 6
+[22:12:37.051] [SEVERE ] placing card 23 in slot 7
+[22:12:37.160] [SEVERE ] placing card 27 in slot 8
+[22:12:37.272] [SEVERE ] placing card 51 in slot 9
+[22:12:37.383] [SEVERE ] placing card 54 in slot 10
+[22:12:37.494] [SEVERE ] placing card 36 in slot 11
+[22:12:37.504] [SEVERE ] updating countdown to 60000
+[22:12:37.505] [SEVERE ] updating countdown to 59999
+[22:12:38.519] [SEVERE ] updating countdown to 58985
+[22:12:39.532] [SEVERE ] updating countdown to 57972
+[22:12:40.087] [SEVERE ] key 59 was pressed by player 2
+[22:12:40.087] [SEVERE ] player 2 placing token on slot 7
+[22:12:40.150] [SEVERE ] key 76 was pressed by player 2
+[22:12:40.150] [SEVERE ] player 2 placing token on slot 6
+[22:12:40.238] [SEVERE ] key 75 was pressed by player 2
+[22:12:40.238] [SEVERE ] player 2 placing token on slot 5
+[22:12:40.239] [SEVERE ] removing player 2 token from slot 5
+[22:12:40.239] [SEVERE ] removing player 2 token from slot 6
+[22:12:40.239] [SEVERE ] removing player 2 token from slot 7
+[22:12:40.240] [SEVERE ] setting player 2 freeze to 3000
+[22:12:40.542] [SEVERE ] updating countdown to 56962
+[22:12:40.679] [SEVERE ] key 59 was pressed by player 2
+[22:12:40.750] [SEVERE ] key 76 was pressed by player 2
+[22:12:40.865] [SEVERE ] key 75 was pressed by player 2
+[22:12:41.253] [SEVERE ] setting player 2 freeze to 2000
+[22:12:41.553] [SEVERE ] updating countdown to 55951
+[22:12:42.263] [SEVERE ] setting player 2 freeze to 1000
+[22:12:42.564] [SEVERE ] updating countdown to 54940
+[22:12:43.272] [SEVERE ] setting player 2 freeze to 0
+[22:12:43.573] [SEVERE ] updating countdown to 53931
+[22:12:44.585] [SEVERE ] updating countdown to 52919
+[22:12:45.595] [SEVERE ] updating countdown to 51909
+[22:12:46.607] [SEVERE ] updating countdown to 50897
+[22:12:47.613] [SEVERE ] updating countdown to 49891
+[22:12:48.570] [SEVERE ] key 76 was pressed by player 2
+[22:12:48.570] [SEVERE ] player 2 placing token on slot 6
+[22:12:48.628] [SEVERE ] updating countdown to 48876
+[22:12:48.653] [SEVERE ] key 75 was pressed by player 2
+[22:12:48.653] [SEVERE ] player 2 placing token on slot 5
+[22:12:48.773] [SEVERE ] key 74 was pressed by player 2
+[22:12:48.774] [SEVERE ] player 2 placing token on slot 4
+[22:12:48.774] [SEVERE ] removing player 2 token from slot 4
+[22:12:48.775] [SEVERE ] removing player 2 token from slot 5
+[22:12:48.775] [SEVERE ] removing player 2 token from slot 6
+[22:12:48.775] [SEVERE ] setting player 2 freeze to 3000
+[22:12:49.471] [SEVERE ] key 76 was pressed by player 2
+[22:12:49.549] [SEVERE ] key 75 was pressed by player 2
+[22:12:49.621] [SEVERE ] key 74 was pressed by player 2
+[22:12:49.639] [SEVERE ] updating countdown to 47865
+[22:12:49.782] [SEVERE ] setting player 2 freeze to 2000
+[22:12:50.649] [SEVERE ] updating countdown to 46855
+[22:12:50.761] [SEVERE ] key 75 was pressed by player 2
+[22:12:50.790] [SEVERE ] setting player 2 freeze to 1000
+[22:12:50.881] [SEVERE ] key 74 was pressed by player 2
+[22:12:51.663] [SEVERE ] updating countdown to 45841
+[22:12:51.805] [SEVERE ] setting player 2 freeze to 0
+[22:12:52.670] [SEVERE ] updating countdown to 44834
+[22:12:53.680] [SEVERE ] updating countdown to 43824
+[22:12:54.237] [SEVERE ] exit button pressed
+[22:12:54.238] [INFO   ] thread dealer terminated.
+[22:12:54.238] [INFO   ] thread dealer terminated.
+[22:12:54.238] [SEVERE ] thanks for playing... it was fun!
+[22:12:54.238] [INFO   ] thread main terminated.
