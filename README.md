@@ -8,7 +8,9 @@ The project was part of the Systems Programming course at Ben Gurion University,
 Objectives:
 
 a. Ensuring Thread Safety and Correctness: Emphasis on critical sections and addressing edge cases to prevent concurrency issues.
+
 b. CPU Optimization: Utilizing thread synchronization techniques, including Readers-Writers locks, to enhance CPU resource utilization.
+
 c. Object-Oriented Programming: Utilizing inheritance to create an abstract Player class, extended by Human-Player class and Ai - player class, along with other essential entities like the Table, Dealer, and Timer.
 
 Overview of the "Set" Card Game:
