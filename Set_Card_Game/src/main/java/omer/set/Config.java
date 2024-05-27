@@ -87,6 +87,11 @@ public class Config {
     public final long endGamePauseMillies;
 
     /**
+     * The number of seconds to pause between the Ai player's key presses
+     */
+    public final long PauseAiPlayer;
+
+    /**
      * The names of the players to display on the screen
      * Note: if there are more players than names, the remaining players will be called "Player 3", "Player 4", etc.
      */
@@ -210,6 +215,7 @@ public class Config {
         penaltyFreezeMillis = (long) (Double.parseDouble(properties.getProperty("PenaltyFreezeSeconds", "3")) * 1000.0);
         tableDelayMillis = (long) (Double.parseDouble(properties.getProperty("TableDelaySeconds", "0.1")) * 1000.0);
         endGamePauseMillies = (long) (Double.parseDouble(properties.getProperty("EndGamePauseSeconds", "5")) * 1000.0);
+        PauseAiPlayer = (long) (Double.parseDouble(properties.getProperty("PauseAiPlayer", "0.5")) * 1000.0);
 
         // ui settings
         String[] names = properties.getProperty("PlayerNames", "Player 1, Player 2").split(",");
