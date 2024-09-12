@@ -30,8 +30,6 @@ public class AiPlayer extends Player{
             }
             //optional for slowing down the Ai Player:
             try{this.playerThread.sleep(env.config.AiDelaySeconds);} catch (InterruptedException Ignored){}
-
-
         }
         System.out.printf("Info: Thread %s terminated.%n", Thread.currentThread().getName());
     }
