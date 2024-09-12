@@ -1,0 +1,38 @@
+[09:56:16.671] [INFO   ] thread main starting.
+[09:56:16.679] [SEVERE ] cannot read configuration file config.properties trying from resources.
+[09:56:16.682] [SEVERE ] configuration file was loaded from resources directory.
+[09:56:17.361] [INFO   ] thread dealer starting.
+[09:56:17.545] [SEVERE ] placing card 27 in slot 0
+[09:56:17.654] [SEVERE ] placing card 56 in slot 1
+[09:56:17.764] [SEVERE ] placing card 22 in slot 2
+[09:56:17.875] [SEVERE ] placing card 9 in slot 3
+[09:56:17.984] [SEVERE ] placing card 68 in slot 4
+[09:56:18.094] [SEVERE ] placing card 50 in slot 5
+[09:56:18.205] [SEVERE ] placing card 57 in slot 6
+[09:56:18.316] [SEVERE ] placing card 3 in slot 7
+[09:56:18.426] [SEVERE ] placing card 45 in slot 8
+[09:56:18.534] [SEVERE ] placing card 23 in slot 9
+[09:56:18.642] [SEVERE ] placing card 41 in slot 10
+[09:56:18.751] [SEVERE ] placing card 66 in slot 11
+[09:56:18.759] [SEVERE ] updating countdown to 30000
+[09:56:18.759] [SEVERE ] player 3 placing token on slot 3
+[09:56:18.759] [SEVERE ] player 4 placing token on slot 7
+[09:56:18.760] [SEVERE ] updating countdown to 29999
+[09:56:18.760] [SEVERE ] player 3 placing token on slot 0
+[09:56:18.760] [SEVERE ] player 4 placing token on slot 9
+[09:56:18.760] [SEVERE ] player 3 placing token on slot 10
+[09:56:18.761] [SEVERE ] removing player 4 token from slot 9
+[09:56:18.761] [SEVERE ] removing player 3 token from slot 0
+[09:56:18.761] [SEVERE ] removing player 3 token from slot 3
+[09:56:18.761] [SEVERE ] removing player 3 token from slot 10
+[09:56:18.761] [SEVERE ] player 4 placing token on slot 8
+[09:56:18.761] [SEVERE ] setting player 3 freeze to 3000
+[09:56:18.762] [SEVERE ] player 4 placing token on slot 4
+[09:56:18.762] [SEVERE ] removing player 4 token from slot 4
+[09:56:18.762] [SEVERE ] removing player 4 token from slot 7
+[09:56:18.762] [SEVERE ] removing player 4 token from slot 8
+[09:56:18.763] [SEVERE ] setting player 4 freeze to 3000
+[09:56:19.658] [SEVERE ] exit button pressed
+[09:56:19.661] [INFO   ] thread dealer terminated.
+[09:56:19.661] [SEVERE ] thanks for playing... it was fun!
+[09:56:19.662] [INFO   ] thread main terminated.
