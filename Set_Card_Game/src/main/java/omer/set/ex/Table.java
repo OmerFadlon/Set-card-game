@@ -56,7 +56,7 @@ public class Table {
         cardToSlot = new Integer[env.config.deckSize];
         this.players = players;
         tokens = new boolean[env.config.players][env.config.tableSize];
-        rwLock = new ReentrantReadWriteLock();
+        rwLock = new ReentrantReadWriteLock(true);
 
     }
 
